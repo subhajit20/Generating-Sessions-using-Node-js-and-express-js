@@ -5,7 +5,7 @@ mongoose.set("strictQuery", false);
 async function DbConnect() {
     let flag = false;
     try {
-        const connect = await mongoose.connect(process.env.MONGO_URI);
+        await mongoose.connect(process.env.MONGO_URI);
         console.log("Connectedd")
     } catch (e) {
         flag = true;

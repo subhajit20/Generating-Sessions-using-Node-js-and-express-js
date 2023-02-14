@@ -1,61 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('Home') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <body>
+        <form action="http://localhost:3000/register/" method="POST" id="myform">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div>
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" name="confirmpassword" id="confirmpassword">
+            </div>
 
-<body>
-    <form id="myform">
-        <div>
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username">
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-        </div>
-        <div>
-            <label for="confirmpassword">Confirm Password</label>
-            <input type="password" id="confirmpassword">
-        </div>
+            <button type="submit" id="btn">Register</button>
+        </form>
 
-        <button type="submit" id="btn">Register</button>
-    </form>
+    </body>
 
-
-    <script>
-        const btn = document.getElementById("btn");
-        const myform = document.getElementById("myform");
-        const username = document.getElementById("username");
-        const password = document.getElementById("password");
-        const confirmpassword = document.getElementById("confirmpassword");
-
-
-        btn.addEventListener('click', async(e) => {
-
-            e.preventDefault();
-
-            const formdata = new FormData(myform);
-            const res = await fetch("http://localhost:3000/register/", {
-                method: "POST",
-                body: JSON.stringify({
-                    username: username.value,
-                    password: password.value,
-                    confirmpassword: confirmpassword.value
-                }),
-                headers: {
-                    'content-type': "application/json"
-                }
-            })
-            const data = await res.json();
-
-            console.log(data);
-        })
-    </script>
-</body>
-
-</html>
+    </html>

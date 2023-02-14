@@ -2,11 +2,8 @@ function UserMiddleWare(req, res, next) {
     let reg = /[^1-9]/
 
     if (reg.test(req.body.username) != true || req.body.password != req.body.confirmpassword) {
-        res.status(500).json({
-            msg: "Username should not starts with any number"
-        })
+        res.status(500).send("Username should not starts with any number")
     } else {
-        req.data = "hellowwwww Worldd";
         next()
     }
 
